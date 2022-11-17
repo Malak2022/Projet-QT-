@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>login</class>
+ <widget class="QDialog" name="login">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>758</width>
+    <height>418</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>641</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+
+
+
+     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+
+                                      stop: 0 #E0E0E0, stop: 1 #FFFFFF);
+
+    border: 2px solid gray;
+
+    border-radius: 5px;
+
+    margin-top: 1ex; 
+
+background-color :rgb(255, 211, 248)  
+
+}</string>
+   </property>
+   <property name="title">
+    <string>Authentification</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>160</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>220</y>
+      <width>56</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_ID">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>150</y>
+      <width>112</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+
+
+
+
+
+
+
+color: black;
+
+
+
+background-color:qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(150, 35, 205, 155), stop:1 rgba(255, 255, 255, 255));
+
+
+
+border-width: 1px;
+
+
+
+border-color: #339;
+
+
+
+border-style: solid;
+
+
+
+border-radius: 7;
+
+
+
+padding: 3px;
+
+
+
+font-size: 10px;
+
+
+
+padding-left: 5px;
+
+
+
+padding-right: 5px;
+
+
+
+min-width: 100px;
+
+
+
+max-width: 100px;
+
+
+
+min-height: 20px;
+
+
+
+max-height: 20px;
+
+
+
+font: 75 italic 10pt &quot;Verdana&quot;;
+
+
+
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_mdp">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>220</y>
+      <width>112</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+
+
+
+
+
+
+
+color: black;
+
+
+
+background-color:qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(150, 35, 205, 155), stop:1 rgba(255, 255, 255, 255));
+
+
+
+border-width: 1px;
+
+
+
+border-color: #339;
+
+
+
+border-style: solid;
+
+
+
+border-radius: 7;
+
+
+
+padding: 3px;
+
+
+
+font-size: 10px;
+
+
+
+padding-left: 5px;
+
+
+
+padding-right: 5px;
+
+
+
+min-width: 100px;
+
+
+
+max-width: 100px;
+
+
+
+min-height: 20px;
+
+
+
+max-height: 20px;
+
+
+
+font: 75 italic 10pt &quot;Verdana&quot;;
+
+
+
+}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pb_login">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>270</y>
+      <width>112</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+
+
+
+
+
+
+
+color: black;
+
+
+
+background-color:qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(170, 85, 255, 255), stop:1 rgba(255, 255, 255, 255));
+
+
+
+border-width: 1px;
+
+
+
+border-color: #339;
+
+
+
+border-style: solid;
+
+
+
+border-radius: 7;
+
+
+
+padding: 3px;
+
+
+
+font-size: 10px;
+
+
+
+padding-left: 5px;
+
+
+
+padding-right: 5px;
+
+
+
+min-width: 100px;
+
+
+
+max-width: 100px;
+
+
+
+min-height: 20px;
+
+
+
+max-height: 20px;
+
+
+
+font: 75 italic 10pt &quot;Verdana&quot;;
+
+
+
+}
+
+
+
+QPushButton:hover:pressed
+
+
+
+{
+
+
+
+background-color :qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(255, 146, 139, 255), stop:1 rgba(255, 255, 255, 255));
+
+
+
+color:white;
+
+
+
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>LOGIN</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>80</y>
+      <width>421</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::WheelFocus</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Downloads/az-removebg-preview.png</pixmap>
+    </property>
+   </widget>
+   <zorder>label_9</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>lineEdit_ID</zorder>
+   <zorder>lineEdit_mdp</zorder>
+   <zorder>pb_login</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
