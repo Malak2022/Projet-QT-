@@ -55,7 +55,7 @@ private slots:
 
     void on_pushButton_stat_clicked();
 
-    void on_calendarWidget_clicked(const QDate &date);
+    void on_calendarWidget_clicked(const QDate &date); //calendrier evenement
 
 
 
