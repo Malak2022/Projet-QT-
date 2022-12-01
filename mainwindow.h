@@ -15,8 +15,9 @@
 #include <QFile>
 #include <QDataStream>
 #include <QMediaPlayer>
-
-
+#include<QPropertyAnimation>
+#include<arduino.h>
+#include<parking.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,7 +48,7 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
-
+    void update_label();
     void on_pushButton_5_clicked();
 
     void on_comboBox_3_currentIndexChanged(const QString &arg1);
@@ -65,6 +66,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     evenement e;
+    parking pk;
+    QByteArray data; // variable contenant les données reçues
+    arduino A; // objet temporaire
 
 };
 #endif // MAINWINDOW_H

@@ -21,13 +21,37 @@
 #include <QtCharts/QChartView>
 #include <QApplication>
 #include<QCalendarWidget>
-
+#include<arduino.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
      ui(new Ui::MainWindow)
 {
      ui->setupUi(this);
+     int ret=A.connect_arduino(); // lancer la connexion à arduino
+         switch(ret){
+         case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+             break;
+         case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+            break;
+         case(-1):qDebug() << "arduino is not available";
+         }
+           data=A.read_from_arduino();
+         qDebug() << data;
+
+       int a=pk.dispo_place();
+       QByteArray abyte0;
+       abyte0.resize(4);
+
+       abyte0[0] = (uchar)
+     (0x000000ff & a);
+
+     A.write_to_arduino(abyte0);
+
+
+          QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+          //le slot update_label suite à la reception du signal readyRead (reception des données).
+
       ui->tabevent->setModel(e.afficher());
       ui->comboBox_2->setModel(e.afficher());
       ui->comboBox_3->setModel(e.afficher());
@@ -50,12 +74,54 @@ MainWindow::MainWindow(QWidget *parent)
         movie->start();
         ui->label_gif->show();
 
+
+
+
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+        if(data=="B"){
+      A.write_to_arduino("1");
+      pk.update(data.toInt());
+
+        QMessageBox::information(this,"Parking AZ","spots left = 1");
+        qDebug() << data;
+
+           }
+      if(data=="C"){
+       A.write_to_arduino("1");
+      QMessageBox::information(this,"Parking AZ","spots left = 2");
+        qDebug() << data;
+
+           }
+    if(data=="D"){
+       A.write_to_arduino("1");
+       QMessageBox::information(this,"Parking AZ","spots left = 3");
+     qDebug() << data;
+           }
+       if(data=="E"){
+       A.write_to_arduino("1");
+       QMessageBox::information(this,"Parking AZ","spots left = 4");
+        qDebug() << data;
+
+           }
+     if(data=="F"){
+       A.write_to_arduino("1");
+       QMessageBox::information(this,"Parking AZ","spots left = 5");
+        qDebug() << data;
+
+           }
+           else if(data=="A"){
+                QMessageBox::information(this,"Parking AZ","spots left = 0");
+                A.write_to_arduino("4");
+           }
+}
 
 void MainWindow::on_pushButton_2_clicked()
 {
