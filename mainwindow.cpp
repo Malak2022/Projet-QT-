@@ -177,7 +177,7 @@ void MainWindow::on_pushButton_suppression_clicked()
 {
     {
 
-        QMediaPlayer *music=new QMediaPlayer();
+        QMediaPlayer *music=new QMediaPlayer(); //son
         music->setMedia(QUrl("C:/Users/Nawres/Downloads/mixkit-fast-double-click-on-mouse-275.wav"));
         music->setVolume(50);
         music->play();
