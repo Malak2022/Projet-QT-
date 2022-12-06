@@ -3,6 +3,7 @@
 #include <QtDebug>
 #include <QObject>
 #include <QString>
+#include<QMessageBox>
 PERSONNEL::PERSONNEL()
 {
 ID_PERSONNEL=0;SALAIRE=0;TELEPHONE=0;AGE=0;NOM=" ";PRENOM=" ";GRADE=" ";GENRE=0,PASSWORD=0; NOMBRE_RES=0;
@@ -127,7 +128,7 @@ QSqlQueryModel* PERSONNEL::Trier(QString x)
 QSqlQueryModel*PERSONNEL::Rechercher(QString a)
 {
     QSqlQueryModel * query=new QSqlQueryModel();
-        query->setQuery("select * from PERSONNEL where (ID_PERSONNEL like '%"+a+"%' or PRENOM like '%"+a+"%' or AGE like '%"+a+"%' or ROLE like '%"+a+"%' or SALAIRE like '%"+a+"%' or TELEPHONE like '%"+a+"%'or PASSWORD like '%"+a+"%'or NOM like '%"+a+"%' or Genre like '%"+a+"%' or  GRADE like '%"+a+"%' ) ");
+        query->setQuery("select * from PERSONNEL where (ID_PERSONNEL like '%"+a+"%' or NOM like '%"+a+"%' or AGE like '%"+a+"%'  ) ");
 
         query->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
         query->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
@@ -160,7 +161,7 @@ QString PERSONNEL::EDM()
             while (qry.next())
             {n=qry.value(0).toString();}
 
-            QSqlQuery qry1("select PRENOM from PERSONNEL where NOMBRE_RES ="+n);
+            QSqlQuery qry1("select NOM from PERSONNEL where NOMBRE_RES ="+n);
             while (qry1.next())
             {nom=qry1.value(0).toString();}
 
@@ -168,4 +169,45 @@ QString PERSONNEL::EDM()
 
 }
 
+int PERSONNEL::login(QString ID_PERSONNEL, QString PASSWORD)
 
+    {
+    QSqlQuery query;
+    QMessageBox msg; int i=0;QString r;
+
+    query.prepare(QString("select *from PERSONNEL WHERE ID_PERSONNEL=:ID_PERSONNEL AND PASSWORD=:PASSWORD"));
+    query.bindValue(":ID_PERSONNEL",ID_PERSONNEL);
+    query.bindValue(":PASSWORD",PASSWORD);
+    query.exec();
+
+    while(query.next())
+    {
+    QString IdFromDB=query.value("ID_PERSONNEL").toString();
+    QString MdpFromDB=query.value("PASSWORD").toString();
+    if(ID_PERSONNEL==IdFromDB && PASSWORD==MdpFromDB)
+    {r=query.value("ROLE").toString();i=1;}}
+    if (i==0)
+    {
+
+    msg.setText("error! mot de passe ou identifiant incorrecte!");
+    msg.exec();}
+    else{
+
+    if(r=="admin")
+    i=2;
+else {
+   if(r=="fournisseur")
+      i=3;
+   else {
+      if(r=="salle")
+         i=4;
+      else {
+         if(r=="equipement")
+            i=5;
+      }
+}
+    }
+    }
+
+    return i;
+    }

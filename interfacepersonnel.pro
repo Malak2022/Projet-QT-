@@ -1,6 +1,6 @@
 QT       += core gui sql network multimedia multimediawidgets charts printsupport widgets axcontainer
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia serialport
 
 
 CONFIG += c++11
@@ -17,23 +17,39 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Parking.cpp \
+    agent.cpp \
+    arduino.cpp \
     connection.cpp \
+    equipement.cpp \
+    fournisseur.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
     personnel.cpp \
+    salle.cpp \
     stat_combo.cpp
 
 HEADERS += \
+    Parking.h \
+    agent.h \
+    arduino.h \
     connection.h \
+    equipement.h \
+    fournisseur.h \
     login.h \
     mainwindow.h \
     personnel.h \
+    salle.h \
     stat_combo.h
 
 FORMS += \
+    agent.ui \
+    equipement.ui \
+    fournisseur.ui \
     login.ui \
     mainwindow.ui \
+    salle.ui \
     stat_combo.ui
 
 # Default rules for deployment.

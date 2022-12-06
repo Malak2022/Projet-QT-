@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "personnel.h"
 #include "stat_combo.h"
+#include "arduino.h"
+#include "Parking.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -41,10 +43,16 @@ private slots:
 
     void on_pb_emd_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void update_label();
 private:
     Ui::MainWindow *ui;
     PERSONNEL P;
     stat_combo *s;
     QSound *son;
+   QString data;
+    arduino A;
+    parking p;
 };
 #endif // MAINWINDOW_H

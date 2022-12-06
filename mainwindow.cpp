@@ -22,16 +22,30 @@
 #include <QFile>
 #include <QDataStream>
 #include <QTextDocument>
+#include "arduino.h"
+#include "Parking.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+   ui->le_idp->setPlaceholderText("Entrez l'ID");
+   ui->le_age->setPlaceholderText("Entrez l'age");
+   ui->le_tel->setPlaceholderText("XXXXXXXX");
+   ui->le_nom->setPlaceholderText("Entrez le nom");
+   ui->le_prenom->setPlaceholderText("Entrez le prenom");
+   ui->le_salaire->setPlaceholderText("Entrez le salaire");
+   //ui->le_role->setPlaceholderText("Entrez le role");
+   ui->le_grade->setPlaceholderText("Entrez le grade");
+   ui->le_password->setPlaceholderText("Entrez le MDP");
+   ui->le_nbrres->setPlaceholderText("Entrez nbre RES");
+   ui->line_recherche->setPlaceholderText("Recherche");
+   ui->le_idp_sup->setPlaceholderText("ID à Supprimer");
   ui->le_idp->setValidator( new QIntValidator(0,9999999, this));
   ui->le_age->setValidator( new QIntValidator(0,100,this));
   ui->le_tel->setValidator( new QIntValidator(0,99999999,this));
   ui->le_salaire->setValidator(new QIntValidator(0,9999999,this));
-  ui->le_role->setValidator(new QRegExpValidator(QRegExp("[a-z]*")));
+  //ui->le_role->setValidator(new QRegExpValidator(QRegExp("[a-z]*")));
   ui->le_nom->setValidator(new QRegExpValidator(QRegExp("[a-z]*")));
   ui->le_prenom->setValidator(new QRegExpValidator(QRegExp("[a-z]*")));
   ui->le_grade->setValidator(new QRegExpValidator(QRegExp("[a-z]*")));
@@ -39,6 +53,28 @@ MainWindow::MainWindow(QWidget *parent)
   ui->tab_personnel->setModel(P.afficher());
   ui->comboBox_3->setModel(P.afficher());
   son=new QSound(":/C/Users/user/Downloads/Sonido-del-Click-del-Mouse-Mouse-Click-Sound-Effect.wav");
+  int ret=A.connect_arduino(); // lancer la connexion à arduino
+           switch(ret){
+           case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+               break;
+           case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+              break;
+           case(-1):qDebug() << "arduino is not available";
+           }
+             data=A.read_from_arduino();
+           qDebug() << data;
+
+         int a=p.dispo_place();
+         QByteArray abyte0;
+         abyte0.resize(4);
+
+         abyte0[0] = (uchar)
+       (0x000000ff & a);
+
+       A.write_to_arduino(abyte0);
+
+       QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+       //le slot update_label suite à la reception du signal readyRead (reception des données)
 }
 
 MainWindow::~MainWindow()
@@ -55,7 +91,7 @@ void MainWindow::on_pb_ajouter_clicked()
     QString PRENOM=ui->le_prenom->text();
     int AGE=ui->le_age->text().toInt();
     QString GRADE=ui->le_grade->text();
-    QString ROLE=ui->le_role->text();
+    QString ROLE=ui->comboBox_role->currentText();
     int SALAIRE=ui->le_salaire->text().toInt();
    int GENRE=ui->le_genre->currentText().toInt();
     int TELEPHONE=ui->le_tel->text().toInt();
@@ -100,13 +136,13 @@ void MainWindow::on_pb_supprimer_clicked()
 
 void MainWindow::on_pb_modifier_clicked()
 {
-    son->play();
+    //son->play();
     int ID_PERSONNEL=ui->le_idp->text().toInt();
     QString NOM=ui->le_nom->text();
     QString PRENOM=ui->le_prenom->text();
     int AGE=ui->le_age->text().toInt();
     QString GRADE=ui->le_grade->text();
-    QString ROLE=ui->le_role->text();
+    QString ROLE=ui->comboBox_role->currentText();
     int SALAIRE=ui->le_salaire->text().toInt();
     int GENRE=ui->le_genre->currentText().toInt();
     int TELEPHONE=ui->le_tel->text().toInt();
@@ -114,7 +150,7 @@ void MainWindow::on_pb_modifier_clicked()
     int NOMBRE_RES=ui->le_nbrres->text().toInt();
     PERSONNEL P(ID_PERSONNEL,NOM,PRENOM,AGE,GRADE,ROLE,SALAIRE,GENRE,TELEPHONE,PASSWORD,NOMBRE_RES);
     bool test=P.modifier(ID_PERSONNEL);
-    if(test)
+    if(!test)
     {
         QMessageBox::information(nullptr, QObject::tr("Modifier"),
                     QObject::tr("Modification  avec succés.\n"
@@ -251,7 +287,7 @@ void MainWindow::on_comboBox_3_currentIndexChanged(const QString &arg1)
         ui->le_prenom->setText(query.value(2).toString()) ;
         ui->le_age->setText(query.value(3).toString()) ;
         ui->le_grade->setText(query.value(4).toString()) ;
-        ui->le_role->setText(query.value(5).toString()) ;
+        ui->comboBox_role->setCurrentText(query.value(5).toString()) ;
         ui->le_salaire->setText(query.value(6).toString()) ;
         //ui->le_genre->setCurrentText(query.value(7).toString()) ;
         ui->le_tel->setText(query.value(8).toString()) ;
@@ -273,3 +309,84 @@ void MainWindow::on_pb_emd_clicked()
 
 }
 
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    close();
+}
+void MainWindow::update_label()
+
+{
+
+    data=A.read_from_arduino();
+
+        if(data=="B"){
+
+      A.write_to_arduino("1");//envoyer 1 vers arduino
+
+      p.update(data.toInt());//mise a jour de la colonne place dispo du table parking
+
+
+        QMessageBox::information(this,"Parking AZ","spots left = 1");
+
+        qDebug() << data;
+
+
+
+           }
+
+        if(data=="C"){
+
+       A.write_to_arduino("1");
+
+      QMessageBox::information(this,"Parking AZ","spots left = 2");
+
+        qDebug() << data;
+
+
+
+           }
+
+        if(data=="D"){
+
+       A.write_to_arduino("1");
+
+       QMessageBox::information(this,"Parking AZ","spots left = 3");
+
+     qDebug() << data;
+
+           }
+
+        if(data=="E"){
+
+       A.write_to_arduino("1");
+
+       QMessageBox::information(this,"Parking AZ","spots left = 4");
+
+        qDebug() << data;
+
+
+
+           }
+
+        if(data=="F"){
+
+       A.write_to_arduino("1");
+
+       QMessageBox::information(this,"Parking AZ","spots left = 5");
+
+        qDebug() << data;
+
+
+
+           }
+
+           else if(data=="A"){
+
+                QMessageBox::information(this,"Parking AZ","spots left = 0");//pas de place
+
+                A.write_to_arduino("4");
+
+           }
+
+}

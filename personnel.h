@@ -37,6 +37,7 @@ public:
     QSqlQueryModel* Trier(QString);
     QSqlQueryModel* Rechercher(QString);
      QSqlQueryModel* setid();
+     int login(QString,QString);
 private:
     int ID_PERSONNEL,AGE,SALAIRE,TELEPHONE,PASSWORD,GENRE,NOMBRE_RES;
     QString NOM,PRENOM,GRADE,ROLE;

@@ -24,6 +24,8 @@ signals:
 
     void on_pb_login_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::login *ui;
     MainWindow *main;

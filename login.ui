@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>758</width>
-    <height>418</height>
+    <width>1096</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>50</x>
      <y>30</y>
-     <width>641</width>
-     <height>351</height>
+     <width>991</width>
+     <height>531</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -47,24 +47,30 @@ background-color :rgb(255, 211, 248)
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>160</y>
-      <width>121</width>
-      <height>16</height>
+      <x>400</x>
+      <y>230</y>
+      <width>131</width>
+      <height>81</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic 12pt &quot;Arial&quot;;</string>
+    </property>
     <property name="text">
-     <string>ID</string>
+     <string>Identifiant</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>220</y>
-      <width>56</width>
+      <x>400</x>
+      <y>330</y>
+      <width>101</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic 12pt &quot;Arial&quot;;</string>
     </property>
     <property name="text">
      <string>Password</string>
@@ -73,9 +79,9 @@ background-color :rgb(255, 211, 248)
    <widget class="QLineEdit" name="lineEdit_ID">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>150</y>
-      <width>112</width>
+      <x>510</x>
+      <y>260</y>
+      <width>212</width>
       <height>28</height>
      </rect>
     </property>
@@ -128,11 +134,11 @@ padding-right: 5px;
 
 
 
-min-width: 100px;
+min-width: 200px;
 
 
 
-max-width: 100px;
+max-width: 200px;
 
 
 
@@ -154,9 +160,9 @@ font: 75 italic 10pt &quot;Verdana&quot;;
    <widget class="QLineEdit" name="lineEdit_mdp">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>220</y>
-      <width>112</width>
+      <x>510</x>
+      <y>330</y>
+      <width>212</width>
       <height>28</height>
      </rect>
     </property>
@@ -174,6 +180,90 @@ color: black;
 
 
 background-color:qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(150, 35, 205, 155), stop:1 rgba(255, 255, 255, 255));
+
+
+
+border-width: 1px;
+
+
+
+border-color: #339;
+
+
+
+border-style: solid;
+
+
+
+border-radius: 7;
+
+
+
+padding: 3px;
+
+
+
+font-size: 10px;
+
+
+
+padding-left: 5px;
+
+
+
+padding-right: 5px;
+
+
+
+min-width: 200px;
+
+
+
+max-width: 200px;
+
+
+
+min-height: 20px;
+
+
+
+max-height: 20px;
+
+
+
+font: 75 italic 10pt &quot;Verdana&quot;;
+
+
+
+}</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pb_login">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>400</y>
+      <width>112</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+
+
+
+
+font: 75 italic 12pt &quot;Arial&quot;;
+
+
+color: black;
+
+
+
+background-color:qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(170, 85, 255, 255), stop:1 rgba(255, 255, 255, 255));
 
 
 
@@ -229,14 +319,58 @@ font: 75 italic 10pt &quot;Verdana&quot;;
 
 
 
-}</string>
+}
+
+
+
+QPushButton:hover:pressed
+
+
+
+{
+
+
+
+background-color :qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(255, 146, 139, 255), stop:1 rgba(255, 255, 255, 255));
+
+
+
+color:white;
+
+
+
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>LOGIN</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_login">
+   <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>270</y>
+      <x>530</x>
+      <y>30</y>
+      <width>421</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::WheelFocus</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Downloads/az-removebg-preview.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>450</y>
       <width>112</width>
       <height>28</height>
      </rect>
@@ -335,34 +469,44 @@ color:white;
 </string>
     </property>
     <property name="text">
-     <string>LOGIN</string>
+     <string>Quitter</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="label_gif">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>80</y>
-      <width>421</width>
-      <height>161</height>
+      <x>10</x>
+      <y>-70</y>
+      <width>1101</width>
+      <height>551</height>
      </rect>
     </property>
-    <property name="focusPolicy">
-     <enum>Qt::WheelFocus</enum>
-    </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Downloads/az-removebg-preview.png</pixmap>
+     <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_ID_2">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>891</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0.375, x2:1, y2:0, stop:0 rgba(209, 0, 150, 172), stop:1 rgba(255, 255, 255, 255))</string>
+    </property>
+   </widget>
+   <zorder>lineEdit_ID_2</zorder>
    <zorder>label_9</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>lineEdit_ID</zorder>
    <zorder>lineEdit_mdp</zorder>
    <zorder>pb_login</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>label_gif</zorder>
   </widget>
  </widget>
  <resources/>
