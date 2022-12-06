@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../../Downloads/Sonido-del-Click-del-Mouse-Mouse-Click-Sound-Effect.wav</file>
+    </qresource>
+</RCC>
