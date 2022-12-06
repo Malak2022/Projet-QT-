@@ -1,8 +1,6 @@
-
 #include "evenement.h"
 #include<QtDebug>
 #include<QObject>
-
 evenement::evenement()
 {
 numero=0;
@@ -110,3 +108,193 @@ bool evenement::modifier(int numero,QString type, QDate date, QTime duree,float 
         query.bindValue(":id_personnel",id);
         return query.exec();
     }
+QSqlQueryModel* evenement ::recherche_type(QString type)
+{
+
+QSqlQuery query;
+ query.prepare("SELECT * FROM EVENEMENT where TYPE = :type");
+ query.bindValue(":type",type);
+ query.exec();
+ QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery(query);
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+
+return  model;
+
+}
+
+
+QSqlQueryModel* evenement ::recherche_tarif(float tarif)
+{
+
+QSqlQuery query;
+QString tariff= QString::number(tarif);
+ query.prepare("SELECT * FROM EVENEMENT where TARIF = :tarif");
+ query.bindValue(":tarif",tariff);
+query.exec();
+ QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery(query);
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+
+return  model;
+
+}
+QSqlQueryModel* evenement ::recherche_numerosalle(int numero_salle)
+{
+
+QSqlQuery query;
+QString nums= QString::number(numero_salle);
+ query.prepare("SELECT * FROM EVENEMENT where NUMERO_SALLE = :numero_salle");
+ query.bindValue(":numero_salle",nums);
+query.exec();
+ QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery(query);
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+return  model;
+
+}
+QSqlQueryModel*  evenement ::recherche_date(QDate date)
+ {
+
+    QSqlQuery query;
+
+
+     query.prepare("SELECT * FROM  EVENEMENT where DATE_EVENEMENT= :date_evenement");
+     query.bindValue(":date_evenement",date);
+     query.exec();
+     QSqlQueryModel *model= new QSqlQueryModel;
+model->setQuery(query);
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+
+    return model;
+
+ }
+QSqlQueryModel* evenement ::trie_date()
+{
+
+  QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery("SELECT * FROM EVENEMENT ORDER BY DATE_EVENEMENT" );
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+  return  model;
+
+}
+
+QSqlQueryModel* evenement ::trie_nbparticipants()
+{
+
+
+  QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery("SELECT * FROM EVENEMENT ORDER BY NUMERO_PARTICIPANTS " );
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+  return  model;
+
+}
+
+QSqlQueryModel* evenement ::trie_tarif()
+{
+
+
+  QSqlQueryModel *model=new QSqlQueryModel();
+ model->setQuery("SELECT * FROM EVENEMENT ORDER BY  TARIF " );
+ model->setHeaderData(0,Qt::Horizontal,QObject::tr("Numéro"));
+ model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+ model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+ model->setHeaderData(3,Qt::Horizontal,QObject::tr("Durée"));
+ model->setHeaderData(4,Qt::Horizontal,QObject::tr("Tarif"));
+ model->setHeaderData(5,Qt::Horizontal,QObject::tr("Numero_participants"));
+ model->setHeaderData(6,Qt::Horizontal,QObject::tr("Numéro_salle"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("Id_personnel"));
+  return  model;
+
+}
+void evenement::exporter(QTableView *table)
+{
+    QString filters("CSV files (*.csv);;All files (*.*)");
+    QString defaultFilter("CSV files (*.csv)");
+    QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                                        filters, &defaultFilter);
+    QFile file(fileName);
+    QAbstractItemModel *model =  table->model();
+    if (file.open(QFile::WriteOnly | QFile::Truncate))
+    {
+        QTextStream data(&file);
+        QStringList strList;
+        for (int i = 0; i < model->columnCount(); i++)
+        {
+            if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + " \"");
+            else
+                strList.append("");
+         }
+         data << strList.join(";") << "\n";
+         for (int i = 0; i < model->rowCount(); i++)
+         {
+            strList.clear();
+            for (int j = 0; j < model->columnCount(); j++)
+            {
+
+                if (model->data(model->index(i, j)).toString().length() > 0)
+                    strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                else
+                    strList.append("");
+             }
+                data << strList.join(";") + "\n";
+            }
+            file.close();
+        }
+}
+
+QSqlQueryModel * evenement::get_numero_s()
+{
+  QSqlQueryModel *model=new QSqlQueryModel();
+  model->setQuery("select NUMERO_SALLE from SALLES");
+  return model;
+}
+QSqlQueryModel * evenement::get_idperso()
+{
+  QSqlQueryModel *model=new QSqlQueryModel();
+  model->setQuery("select ID_PERSONNEL from PERSONNEL");
+  return model;
+}

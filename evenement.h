@@ -2,11 +2,15 @@
 #define EVENEMENT_H
 #include<QString>
 #include <QDateEdit>
-//#include <QTimeEdit>
+#include <QTimeEdit>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
+#include<QTableView>
+#include<QFile>
+#include<QFileDialog>
+#include<QCoreApplication>
 class evenement
-{   
+{
 private:
     QString type;
     int numero,numero_salle,numero_participants,id_personnel;
@@ -36,9 +40,19 @@ public:
     float get_tarif();
 bool ajouter();
 QSqlQueryModel * afficher();
-bool supprimer(int);
- bool modifier(int,QString,QDate,QTime,float,int,int,int);
+QSqlQueryModel* recherche_type(QString);
+QSqlQueryModel* recherche_tarif(float );
+QSqlQueryModel* recherche_numerosalle(int);
+QSqlQueryModel* recherche_date(QDate);
+QSqlQueryModel* trie_date();
+QSqlQueryModel* trie_tarif();
+QSqlQueryModel* trie_nbparticipants();
+QSqlQueryModel* get_numero_s();
+QSqlQueryModel* get_idperso();
 
+ bool supprimer(int);
+ bool modifier(int,QString,QDate,QTime,float,int,int,int);
+ void exporter(QTableView *table);
 };
 
 #endif // EVENEMENT_H
