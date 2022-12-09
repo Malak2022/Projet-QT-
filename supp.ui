@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>supp</class>
+ <widget class="QDialog" name="supp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1364</width>
+    <height>805</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background rgb(255, 170, 255);</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>-30</x>
+     <y>-50</y>
+     <width>1431</width>
+     <height>881</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 226, 249);</string>
+   </property>
+   <property name="title">
+    <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;ui version=&quot;4.0&quot;&gt;  &lt;widget name=&quot;__qt_fake_top_level&quot;&gt;   &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton_2&quot;&gt;    &lt;property name=&quot;geometry&quot;&gt;     &lt;rect&gt;      &lt;x&gt;260&lt;/x&gt;      &lt;y&gt;490&lt;/y&gt;      &lt;width&gt;131&lt;/width&gt;      &lt;height&gt;41&lt;/height&gt;     &lt;/rect&gt;    &lt;/property&gt;    &lt;property name=&quot;styleSheet&quot;&gt;     &lt;string notr=&quot;true&quot;&gt;font: 75 12pt &amp;quot;MS Shell Dlg 2&amp;quot;; color: black; background-color: rgb(240, 183, 255);  border-style: outset; border-width:2px; border-radius:20px; border-color black  &lt;/string&gt;    &lt;/property&gt;    &lt;property name=&quot;text&quot;&gt;     &lt;string&gt;back &lt;/string&gt;    &lt;/property&gt;   &lt;/widget&gt;  &lt;/widget&gt;  &lt;resources/&gt; &lt;/ui&gt; </string>
+   </property>
+   <widget class="QLineEdit" name="supp_2">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>150</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>140</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+background-color: rgb(240, 183, 255);
+
+border-style: outset;
+border-width:2px;
+border-radius:20px;
+border-color black 
+</string>
+    </property>
+    <property name="text">
+     <string>id_fournisseur</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>150</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+background-color: rgb(240, 183, 255);
+
+border-style: outset;
+border-width:2px;
+border-radius:20px;
+border-color black 
+</string>
+    </property>
+    <property name="text">
+     <string>supprimer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>150</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+background-color: rgb(240, 183, 255);
+
+border-style: outset;
+border-width:2px;
+border-radius:20px;
+border-color black 
+</string>
+    </property>
+    <property name="text">
+     <string>back </string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
